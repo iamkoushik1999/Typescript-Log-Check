@@ -1,6 +1,7 @@
 import { Request, Response } from 'express';
 // Models
 import studentModel from '../models/studentModel';
+import logger from '../utils/logger';
 
 // ---------------------------------------------------
 
@@ -50,6 +51,7 @@ export const addStudents = async (req: Request, res: Response) => {
 // GET
 // Get Students
 export const getStudents = async (req: Request, res: Response) => {
+  logger.info('Get All Students');
   const students = await studentModel.find();
 
   const totalStudents = await studentModel.countDocuments();
